@@ -44,6 +44,9 @@ body {
   transition: transform 0.6s ease-in-out;
   margin: 0.5vw;
   border: 0.5vw solid rgb(102, 1, 1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .frontCard {
@@ -122,4 +125,3 @@ h3 {
   text-align: center;
   margin: 5vw;
 }
-
