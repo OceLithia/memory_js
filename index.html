@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game - Accueil</title>
     <link rel="stylesheet" href="../memory_js/CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <nav>
         <a href="../memory_js/index.html">Accueil</a>
         <a href="../memory_js/inscription.html">S'inscrire</a>
-        <a href="../memory_js/profil.html">Mon Profil</a>
         <a href="../memory_js/connect.html">Se connecter</a>
+        <a href="../memory_js/profil.html">Mon Profil</a>
         <a href="../memory_js/play.html">Jouer</a>
       </nav>
     </header>
@@ -22,24 +26,31 @@
         <p>Bienvenue sur le site du Memory de l'ENI.</p>
       </div>
       <p>Venez jouer avec nous et faites le meilleur score possible.</p>
-      <section>
+      <section class="presentation">
         <h3>Les règles du jeu :</h3>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo dolor
-          mollitia dolore voluptates amet natus minima beatae consectetur. Ab
-          praesentium similique asperiores et nisi sapiente esse sit quae hic
-          perferendis!
+          Retournez deux cartes. <br />
+          Si les images sont identiques, le jeu laisse les cartes visibles.
+          <br />
+          Si les images sont différentes, les cartes se retournent faces cachées
+          là où elles étaient. <br />
+          La partie est terminée lorsque toutes les cartes ont été assemblées
+          par paires.
         </p>
+        <div>
+          <img
+            src="../memory_js/JS/img/halloween/memory-halloween.PNG"
+            alt="vue d'ensemble d'un memory halloween"
+            class="memory-halloween"
+          />
+        </div>
       </section>
       <div>
-        <img src="../memory_js/JS/img/animaux/memory_detail_animaux.png" alt="exemple de memory avec des animaux sauvages">
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
-          blanditiis. Laborum numquam, fugit accusantium architecto rem
-          necessitatibus unde? Quas fugiat vero ducimus incidunt porro laborum
-          enim earum accusamus explicabo officia.
+        <p class="infos">
+          Si vous voulez vous souvenir de votre score : inscrivez-vous via le
+          formulaire. <br />
+          Le jeu garde les 5 meilleurs scores. <br />
+          Si vous voulez relancer une partie appuyez sur la barre d'espace.
         </p>
       </div>
     </main>

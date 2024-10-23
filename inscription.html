@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inscription</title>
     <link rel="stylesheet" href="../memory_js/CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <nav>
         <a href="../memory_js/index.html">Accueil</a>
         <a href="../memory_js/inscription.html">S'inscrire</a>
-        <a href="../memory_js/profil.html">Mon Profil</a>
         <a href="../memory_js/connect.html">Se connecter</a>
+        <a href="../memory_js/profil.html">Mon Profil</a>
         <a href="../memory_js/play.html">Jouer</a>
       </nav>
     </header>
@@ -21,11 +25,13 @@
         <fieldset>
           <legend>Inscrivez-vous :</legend>
           <label for="username">Nom d'utilisateur : </label>
-          <input type="username" id="username" />
+          <input type="username" id="username" required/><br>
           <label for="email">Entrez votre email : </label>
-          <input type="email" id="email" />
-          <label for="password">Entre votre mot de passe : </label>
-          <input type="password" id="password" />
+          <input type="email" id="email" required/><br>
+          <label for="password">Entrez votre mot de passe : </label>
+          <input type="password" id="password" required/> <br>
+          <label for="confirm-password">Confirmez votre mot de passe : </label>
+          <input type="password" id="confirm-password" required/> <br>
           <button>Valider</button>
           <button>Annuler</button>
         </fieldset>

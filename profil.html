@@ -5,18 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My profil</title>
     <link rel="stylesheet" href="../memory_js/CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <nav>
         <a href="../memory_js/index.html">Accueil</a>
         <a href="../memory_js/inscription.html">S'inscrire</a>
-        <a href="../memory_js/profil.html">Mon Profil</a>
         <a href="../memory_js/connect.html">Se connecter</a>
+        <a href="../memory_js/profil.html">Mon Profil</a>
         <a href="../memory_js/play.html">Jouer</a>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <form id="signup-form">
+        <fieldset>
+          <legend>Profil</legend>
+          <label for="username">Nom d'utilisateur : </label>
+          <input type="username" id="username" />
+          <label for="choice">Choix du Memory : </label>
+          <select name="choice" id="memory-choice">
+            <option value=""></option>
+          </select>
+          <select name="size" id="memory-size">
+            Taille du Memory
+            <option value=""></option>
+          </select>
+          <button>Enregistrez</button>
+        </fieldset>
+      </form>
+    </main>
     <script type="module" src="../memory_js/JS/app.js"></script>
   </body>
 </html>
