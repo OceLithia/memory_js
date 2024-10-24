@@ -1,0 +1,59 @@
+#signup-form {
+  font-size: 4vw;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8vw;
+  color: rgb(219, 74, 30);
+}
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 2.5vw;
+  margin-top: 0;
+  margin-bottom: 5vw;
+  text-align: start;
+  flex-wrap: wrap;
+  box-shadow: 0px 0px 15px 5px rgb(194, 194, 98);
+  background-color: rgb(194, 194, 98, 0.3);
+}
+
+.hidden {
+  display: none;
+}
+
+input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4vw;
+  border-radius: 2vw;
+  background-color: rgb(56, 2, 2);
+  color: rgb(241, 173, 47);
+  font-family: "Rubik Wet Paint", serif;
+  font-size: 2vw;
+  text-align: end;
+  width: 50vw;
+  margin: 2vw;
+}
+
+legend{
+    font-family: "Rubik Wet Paint", serif;
+    color: rgb(194, 28, 28);
+    font-size: 6vw;
+    text-decoration: underline;
+    margin-bottom: 4vw;
+}
+
+.signup-button{
+    display: flex;
+    justify-content: center;
+}
+

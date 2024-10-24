@@ -1,12 +1,117 @@
-//fonction pour valider l'username
-function usernameValidator(username) {
-  //regex pour un username de minimum 3 caractères
+// checker l'username (minimum 3 caractères)
+export function usernameValidator(username) {
   const usernameRegex = /^[a-zA-Z0-9]{3,}$/;
-
-  //check si le username est ok avec la regex
-
   return usernameRegex.test(username);
 }
 
+// checker l'email
+export function emailValidator(email) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
 
-export {usernameValidator};
+// checker mdp
+export function passwordValidator(password) {
+  const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/;
+  return passwordRegex.test(password);
+}
+
+// checker un champ et afficher les erreurs
+function validateField(input) {
+  const inputValue = input.value;
+  const $errorElement = document.getElementById(`${input.id}-error`);
+
+  let isValid = true;
+  let errorMessage = "";
+
+  switch (input.id) {
+    case "username":
+      if (!usernameValidator(inputValue)) {
+        errorMessage =
+          "Err'hor ! Nom d'utilisateur incorrect (minimum 3 caractères).";
+        isValid = false;
+      }
+      break;
+    case "email":
+      if (!emailValidator(inputValue)) {
+        errorMessage = "Err'hor ! Email incorrect.";
+        isValid = false;
+      }
+      break;
+    case "password":
+      if (!passwordValidator(inputValue)) {
+        errorMessage =
+          "Err'hor ! Mot de passe incorrect (min. 6 caractères, 1 chiffre et 1 symbole).";
+        isValid = false;
+      } 
+      break;
+    case "confirm-password":
+      const password = document.getElementById("password").value;
+      if (inputValue !== password) {
+        errorMessage = "Err'hor ! Les mots de passe ne correspondent pas.";
+        isValid = false;
+      }
+      break;
+  }
+
+  if (!isValid) {
+    $errorElement.textContent = errorMessage;
+    $errorElement.classList.remove("hidden");
+  } else {
+    $errorElement.textContent = "";
+    $errorElement.classList.add("hidden");
+  }
+
+  return isValid;
+}
+
+// initialisation du formulaire avec validation champ par champ
+export function initForm() {
+  const $signupForm = document.getElementById("signup-form");
+
+  // l'événement `blur` à chaque champ pour la validation
+  const $inputs = $signupForm.querySelectorAll("input");
+  for (const input of $inputs) {
+    input.addEventListener("blur", function () {
+      validateField(input);
+    });
+  }
+
+  // check complet du formulaire quand on utilise "valider"
+  $signupForm.addEventListener("submit", function (event) {
+    event.preventDefault(); //bloque le rechargement de la page
+
+    let formIsValid = true;
+    for (const input of $inputs) {
+      const isValid = validateField(input);
+      if (!isValid) {
+        formIsValid = false;
+      }
+    }
+
+    if (formIsValid) {
+      const user = {
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+      };
+
+      // stocker les datasUsers
+      localStorage.setItem("userData", JSON.stringify(user));
+      //afficher un msg ok
+      alert("Inscription validée!");
+      console.log("Inscriptions : ");
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        console.log(`Clé:${key}, Valeur: ${value}`);
+      }
+
+      //reset formulaire
+      $signupForm.reset();
+    }
+  });
+}
+
+// charger le formulaire à l'affichage de la page
+document.addEventListener("DOMContentLoaded", initForm);

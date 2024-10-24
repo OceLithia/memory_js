@@ -1,0 +1,83 @@
+#win {
+  text-align: center;
+  display: none;
+  font-size: 8vw;
+  margin-bottom: 4vw;
+}
+#playagain {
+  text-align: center;
+  display: none;
+  font-size: 6vw;
+}
+
+.grid {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2vw;
+  margin-bottom: 4vw;
+}
+
+.card {
+  position: relative;
+  height: 20vw;
+  width: 20vw;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  margin: 0.5vw;
+  border: 0.5vw solid rgb(102, 1, 1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.frontCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(151, 65, 24, 1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  backface-visibility: hidden;
+}
+
+.backCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.card.selected {
+  transform: rotateY(180deg); /* Effectue la rotation de la carte entière */
+}
+
+.card.selected .backCard {
+  transform: rotateY(180deg); /* Montre la face arrière lorsque sélectionnée */
+}
+
+.card.selected .frontCard {
+  background-color: rgba(167, 77, 36, 0);
+}
+
+.match .frontCard {
+  pointer-events: none; /* Empêche de cliquer sur les cartes appariées */
+  background-color: rgba(151, 65, 24, 0);
+}
+.match .backCard {
+  border: 4px solid rgb(25, 228, 18);
+  transform: rotateY(0deg);
+  pointer-events: none; /* Empêche de cliquer sur les cartes appariées */
+}
+
+h2 {
+  text-align: center;
+  font-size: 7vw;
+}
