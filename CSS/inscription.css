@@ -44,16 +44,15 @@ input {
   margin: 2vw;
 }
 
-legend{
-    font-family: "Rubik Wet Paint", serif;
-    color: rgb(194, 28, 28);
-    font-size: 6vw;
-    text-decoration: underline;
-    margin-bottom: 4vw;
+legend {
+  font-family: "Rubik Wet Paint", serif;
+  color: rgb(194, 28, 28);
+  font-size: 6vw;
+  text-decoration: underline;
+  margin-bottom: 4vw;
 }
 
-.signup-button{
-    display: flex;
-    justify-content: center;
+.signup-button {
+  display: flex;
+  justify-content: center;
 }
-

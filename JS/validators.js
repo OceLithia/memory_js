@@ -43,7 +43,7 @@ function validateField(input) {
         errorMessage =
           "Err'hor ! Mot de passe incorrect (min. 6 caractères, 1 chiffre et 1 symbole).";
         isValid = false;
-      } 
+      }
       break;
     case "confirm-password":
       const password = document.getElementById("password").value;
@@ -69,7 +69,7 @@ function validateField(input) {
 export function initForm() {
   const $signupForm = document.getElementById("signup-form");
 
-  // l'événement `blur` à chaque champ pour la validation
+  // `blur` à chaque champ pour la validation en tps reel
   const $inputs = $signupForm.querySelectorAll("input");
   for (const input of $inputs) {
     input.addEventListener("blur", function () {
@@ -79,7 +79,7 @@ export function initForm() {
 
   // check complet du formulaire quand on utilise "valider"
   $signupForm.addEventListener("submit", function (event) {
-    event.preventDefault(); //bloque le rechargement de la page
+    event.preventDefault(); 
 
     let formIsValid = true;
     for (const input of $inputs) {
@@ -96,9 +96,8 @@ export function initForm() {
         password: document.getElementById("password").value,
       };
 
-      // stocker les datasUsers
       localStorage.setItem("userData", JSON.stringify(user));
-      //afficher un msg ok
+
       alert("Inscription validée!");
       console.log("Inscriptions : ");
       for (let i = 0; i < localStorage.length; i++) {
@@ -113,5 +112,4 @@ export function initForm() {
   });
 }
 
-// charger le formulaire à l'affichage de la page
 document.addEventListener("DOMContentLoaded", initForm);

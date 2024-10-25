@@ -1,4 +1,3 @@
-//créer la fonction du jeu pour l'appeler dans app.js
 function initMemoryGame() {
   const cardsArray = [
     { name: "bat", img: "JS/img/halloween/bat.png" },
@@ -10,12 +9,14 @@ function initMemoryGame() {
     },
   ];
 
+  //creer la zone de jeu
   const game = document.getElementById("game");
   const grid = document.createElement("section");
   grid.setAttribute("class", "grid");
   game.appendChild(grid);
 
   const gameGrid = cardsArray.concat(cardsArray);
+
   gameGrid.sort(() => 0.5 - Math.random());
 
   let firstTry = "";
@@ -26,11 +27,12 @@ function initMemoryGame() {
   let gameOver = false;
   let previousTarget = null;
 
-  // Fonction pour créer chaque carte dans la grille
+  //créer chaque carte dans la grille
   function createGrid() {
     gameGrid.forEach((cardElement) => {
       const card = document.createElement("div");
       card.classList.add("card");
+      //donner une valeur a chaque carte
       card.dataset.name = cardElement.name;
 
       const frontCard = document.createElement("div");
@@ -38,37 +40,41 @@ function initMemoryGame() {
 
       const backCard = document.createElement("div");
       backCard.classList.add("backCard");
-
       card.style.backgroundImage = `url(${cardElement.img})`;
+
       card.appendChild(frontCard);
       card.appendChild(backCard);
       grid.appendChild(card);
     });
   }
 
-  // Fonction pour vérifier les paires
   function match() {
     let selected = document.querySelectorAll(".selected");
     if (
+      //si deux cartes .selected
       selected.length === 2 &&
+      //&& valeur identique via dataset.name
       selected[0].dataset.name === selected[1].dataset.name
     ) {
       selected.forEach((card) => {
         card.classList.add("match");
+
         card.style.pointerEvents = "none";
       });
+
       matchedPairs++;
+      //si nb === nb de cartes alors fin du jeu
       if (matchedPairs === cardsArray.length) {
         setTimeout(() => {
           document.getElementById("playagain").style.display = "block";
           document.getElementById("win").style.display = "block";
           gameOver = true;
-        }, 500);
+        }, 1000);
       }
     }
   }
 
-  // Fonction pour réinitialiser les essais
+  //reset les essais
   function resetTry() {
     firstTry = "";
     secondTry = "";
@@ -79,7 +85,7 @@ function initMemoryGame() {
     });
   }
 
-  // Fonction pour réinitialiser le jeu
+  // reset le jeu
   function resetGame() {
     document.getElementById("playagain").style.display = "none";
     document.getElementById("win").style.display = "none";
@@ -88,17 +94,18 @@ function initMemoryGame() {
     secondTry = "";
     counter = 0;
     gameOver = false;
-    grid.innerHTML = ""; // Vider la grille
-    gameGrid.sort(() => 0.5 - Math.random()); // Mélanger les cartes
-    createGrid(); // Recréer la grille
+    grid.innerHTML = "";
+    gameGrid.sort(() => 0.5 - Math.random());
+    createGrid();
   }
 
-  // Ajouter l'événement pour cliquer sur une carte
+  //cibler l'evenement du clic dans la grille
   grid.addEventListener("click", function (event) {
     const clicked = event.target.classList.contains("card")
       ? event.target
       : event.target.closest(".card");
 
+    //conditions qui finissent l'evenement
     if (
       !clicked ||
       clicked === previousTarget ||
@@ -108,6 +115,7 @@ function initMemoryGame() {
       return;
     }
 
+    // gestion des tentatives
     if (counter < 2) {
       counter++;
       if (counter === 1) {
@@ -128,18 +136,18 @@ function initMemoryGame() {
           }
         }
       }
+      //evite de cliquer 2 fois la meme carte
       previousTarget = clicked;
     }
   });
 
-  // Ajouter l'événement pour réinitialiser le jeu avec la touche espace
+  //reset le jeu avec event "espace"
   document.addEventListener("keydown", (event) => {
     if (event.code === "Space" && gameOver) {
       resetGame();
     }
   });
 
-  // Initialiser la grille au démarrage
   createGrid();
 }
 
